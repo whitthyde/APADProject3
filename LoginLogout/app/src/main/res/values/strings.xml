@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Login-Logout</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_firstname">First Name</string>
+    <string name="hint_eventid">Event ID</string>
+    <string name="hint_lastname">Last Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="button_next">Next</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="error_password">Password must contain at least 8 characters.</string>
+    <string name="done_text">Done</string>
+    <string name="allevents">See All Events</string>
+    <string name="logout_button">Logout</string>
+    <string name="searchevents">Search Events</string>
+    <string name="createevent">Create an Event</string>
+    <string name="timeslotsearch">Search for open timeslots at a venue</string>
+    <string name="venuesearch">Search for open venues at a date/time.</string>
+    <string name="signup_button">Signup</string>
+    <string name="submit_button">Submit</string>
+    <string name="back_to_login_string">Already Have an Account?</string>\
+    <string name="back_to_menu">Back to Menu</string>
+    <string name="submitjoin">Join</string>
+    <string name="join_button">Join an Event</string>
+    <string name="event_full">This event is full sorry!</string>
+    <string name="hint_eventname">Event Name:</string>
+    <string name="hint_hostname">Host Name:</string>
+    <string name="hint_useremail">To confirm please enter your email again</string>
+    <string name="hint_description">Description:</string>
+    <string name="hint_date">Date: (Must be in format mm-dd-yy)</string>
+    <string name="hint_timeslot">Timeslot:</string>
+    <string name="hint_currentusers">Current Users:</string>
+    <string name="hint_maxusers">Max Users:</string>
+    <string name="hint_price">Price:</string>
+    <string name="hint_venueid">Venue ID:</string>
+
+
+
+
+
+
+</resources>

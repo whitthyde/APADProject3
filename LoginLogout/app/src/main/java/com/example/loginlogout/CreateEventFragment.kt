@@ -14,8 +14,7 @@ import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
 import com.squareup.okhttp.RequestBody
 import com.squareup.okhttp.Response
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.create_event_fragment.*
+
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 import org.json.JSONArray

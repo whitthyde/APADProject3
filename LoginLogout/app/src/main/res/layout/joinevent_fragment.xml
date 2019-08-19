@@ -25,6 +25,14 @@
                 android:text="@string/join_button"
                 android:textAllCaps="true"
                 android:textSize="16sp" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="132dp"
+                android:text="@string/JoinDirections"
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
         <!-- Snippet from "Add text fields" section goes here. -->
         <com.google.android.material.textfield.TextInputLayout
@@ -55,19 +63,6 @@
             />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/useremaillayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:hint="@string/hint_useremail">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/useremailtext"
-            />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Snippet from "Add buttons" section goes here. -->
         <RelativeLayout

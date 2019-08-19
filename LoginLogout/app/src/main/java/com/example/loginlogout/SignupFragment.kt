@@ -81,7 +81,7 @@ class SignupFragment : Fragment() {
     //OKHTTP TRY
 
     private fun SignupAttempt(fn:String,ln:String,un: String,email:String, pw: String): String {
-        val url = "https://dea33744.ngrok.io/signup/"
+        val url = "https://66fd7640.ngrok.io/signup/"
         val client = OkHttpClient()
 
     val json = """

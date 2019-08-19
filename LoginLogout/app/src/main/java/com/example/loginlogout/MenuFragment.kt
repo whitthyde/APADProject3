@@ -45,9 +45,14 @@ class MenuFragment : Fragment() {
             (activity as NavigationHost).navigateTo(EventListingFragment(), false)
 
         })
+        view.myeventsbutton.setOnClickListener({
+
+            (activity as NavigationHost).navigateTo(MyEventsFragment(), false)
+
+        })
         view.searcheventsbutton.setOnClickListener({
 
-                (activity as NavigationHost).navigateTo(EventListingFragment(), false)
+                (activity as NavigationHost).navigateTo(EventSearchFragment(), false)
 
         })
 

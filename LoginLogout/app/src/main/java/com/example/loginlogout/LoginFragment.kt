@@ -47,15 +47,14 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
         // Set an error if the password is less than 8 characters.
         view.next_button.setOnClickListener({
-            if (!isPasswordValid(password_edit_text.text!!)) {
-                password_text_input.error = getString(R.string.error_password)
-            } else {
+
                 // Clear the error.
                 password_text_input.error = null
                 // Navigate to the next Fragment.
 
                 doAsync{
                     val useremail = emailtext.getText().toString()
+                    Global.setUser(useremail)
                     val userpass = password_edit_text.getText().toString()
                     val gotresponse = LoginAttempt(useremail,userpass)   //time-consuming HTTP request
                     val jsonobj = JSONObject(gotresponse)
@@ -63,7 +62,7 @@ class LoginFragment : Fragment() {
                 }
 
 
-            }
+
         })
         view.signup_button.setOnClickListener({
             doAsync{
@@ -101,7 +100,7 @@ class LoginFragment : Fragment() {
     //OKHTTP TRY
 
     private fun LoginAttempt(un: String, pw: String): String {
-        val url = "https://214dd567.ngrok.io/login/auth/"+un+"/"+pw
+        val url = "https://66fd7640.ngrok.io/login/auth/"+un+"/"+pw
         val client = OkHttpClient()
 
 /*        val json = """

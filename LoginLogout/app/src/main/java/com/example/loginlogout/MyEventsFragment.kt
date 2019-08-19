@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.listing_fragment.view.*
-import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.android.synthetic.main.login_fragment.view.*
+import kotlinx.android.synthetic.main.my_events_fragment.view.*
+import kotlinx.android.synthetic.main.my_events_fragment.*
+import kotlinx.android.synthetic.main.my_events_fragment.view.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -21,28 +21,13 @@ import java.util.ArrayList
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.eventlisting_fragment.*
-import kotlinx.android.synthetic.main.eventlisting_fragment.view.*
-import kotlinx.android.synthetic.main.listing_fragment.view.done_button
+import kotlinx.android.synthetic.main.my_events_fragment.view.done_button
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 
-class EventListingFragment : Fragment() {
+class MyEventsFragment : Fragment() {
     private val jsoncode = 1
-    // Uncomment below if response is hardcoded instead of coming from a file asset
-/*    private val response = """
-    [
-     {
-      "name": "James",
-      "email": "james@ut"
-     },
-     {
-      "name": "Jean",
-      "email": "jean@gmail"
-     }
-     ]
-     """ */
+
     private var eventlist: ListView? = null
     private var eventArrayList: ArrayList<String>? = null
     private var eventsModelArrayList: ArrayList<Event_Model>? = null
@@ -65,7 +50,8 @@ class EventListingFragment : Fragment() {
         //response = loadJSONFromAssets();
         doAsync {
             try {
-                eventsModelArrayList = getEvents()
+                var email = Global.getUser()
+                eventsModelArrayList = getEvents(email)
                 // Create a Custom Adapter that gives us a way to "view" each user in the ArrayList
                 EventAdapter = EventAdapter(view.context, eventsModelArrayList!!)
                 // set the custom adapter for the userlist viewing
@@ -114,10 +100,10 @@ class EventListingFragment : Fragment() {
 
 
 
-    private fun getEvents(): ArrayList<Event_Model>? {
+    private fun getEvents(un:String?): ArrayList<Event_Model>? {
 
         val eventModelArrayList = ArrayList<Event_Model>()
-        val url = "https://66fd7640.ngrok.io/events/"
+        val url = "https://66fd7640.ngrok.io/account/androidevents/"+un+"/"
 
         val client = OkHttpClient()
         val request = Request.Builder()

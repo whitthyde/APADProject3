@@ -22,17 +22,20 @@
     <string name="back_to_menu">Back to Menu</string>
     <string name="submitjoin">Join</string>
     <string name="join_button">Join an Event</string>
+    <string name="myevents">See my events</string>
     <string name="event_full">This event is full sorry!</string>
     <string name="hint_eventname">Event Name:</string>
     <string name="hint_hostname">Host Name:</string>
     <string name="hint_useremail">To confirm please enter your email again</string>
     <string name="hint_description">Description:</string>
-    <string name="hint_date">Date: (Must be in format mm-dd-yy)</string>
-    <string name="hint_timeslot">Timeslot:</string>
+    <string name="hint_date">Date: (Must be in format mm-dd-yyyy)</string>
+    <string name="hint_timeslot">Timeslot (8-20):</string>
     <string name="hint_currentusers">Current Users:</string>
     <string name="hint_maxusers">Max Users:</string>
     <string name="hint_price">Price:</string>
     <string name="hint_venueid">Venue ID:</string>
+
+    <string name="JoinDirections">To join an event please fill out ONE of the following fields --- CHOOSE ONE.</string>
 
 
 

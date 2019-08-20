@@ -10,9 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.my_events_fragment.view.*
-import kotlinx.android.synthetic.main.my_events_fragment.*
-import kotlinx.android.synthetic.main.my_events_fragment.view.*
+
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -21,22 +19,23 @@ import java.util.ArrayList
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
-import kotlinx.android.synthetic.main.my_events_fragment.view.done_button
+import kotlinx.android.synthetic.main.venue_listing_fragment.view.*
+import kotlinx.android.synthetic.main.venue_listing_fragment.view.done_button
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 
-class EventSearchResultFragment : Fragment() {
+class VenueSearchResultFragment : Fragment() {
     private val jsoncode = 1
 
-    private var eventlist: ListView? = null
-    private var eventArrayList: ArrayList<String>? = null
-    private var eventsModelArrayList: ArrayList<Event_Model>? = null
-    private var EventAdapter: EventAdapter? = null
+    private var venuelist: ListView? = null
+    private var venueArrayList: ArrayList<String>? = null
+    private var venuesModelArrayList: ArrayList<Venue_Model>? = null
+    private var VenueAdapter: VenueAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.eventlisting_fragment, container, false)
+        val view =  inflater.inflate(R.layout.venue_listing_fragment, container, false)
 
         view.done_button.setOnClickListener({
 
@@ -45,31 +44,29 @@ class EventSearchResultFragment : Fragment() {
 
         })
 
-        eventlist = view.eventlist
+        venuelist = view.venuelist
 //        userModelArrayList = getInfo(response)  // uncomment this and comment the next line if response is above
         //response = loadJSONFromAssets();
         doAsync {
             try {
-                var ename = Global.getEventNameSearches()
-                var date = Global.getDateSearches()
-                var times = Global.getTimeslotSearches()
-                var venueid = Global.getVenueIdSearches()
-                eventsModelArrayList = getEvents(ename,date,times,venueid)
+
+                var date = Global.getDateSearchVens()
+                var times = Global.getTimeslotSearchVens()
+                venuesModelArrayList = getVenues(date,times)
 
                 //resets variables after search plox
-                Global.setEventNameSearches("default")
-                Global.setDateSearches("default")
-                Global.setTimeslotSearches("default")
-                Global.setVenueIdSearches("default")
+                Global.setDateSearchVens("default")
+                Global.setTimeslotSearchVens("default")
+
 
 
                 // Create a Custom Adapter that gives us a way to "view" each user in the ArrayList
-                EventAdapter = EventAdapter(view.context, eventsModelArrayList!!)
+                VenueAdapter = VenueAdapter(view.context, venuesModelArrayList!!)
                 // set the custom adapter for the userlist viewing
                 val handler = Handler(Looper.getMainLooper());
                 handler.post({
                     try {
-                        eventlist!!.adapter = EventAdapter
+                        venuelist!!.adapter = VenueAdapter
                     } catch (e: Exception){
 
                     }
@@ -86,10 +83,10 @@ class EventSearchResultFragment : Fragment() {
 
 
 
-    private fun getEvents(en:String?,date:String?,ts:String?,vid:String?): ArrayList<Event_Model>? {
+    private fun getVenues(date:String?,ts:String?): ArrayList<Venue_Model>? {
 
-        val eventModelArrayList = ArrayList<Event_Model>()
-        val url = "https://66fd7640.ngrok.io/events/searchandroid/"+en+"/"+date+"/"+ts+"/"+vid+"/"
+        val venueModelArrayList = ArrayList<Venue_Model>()
+        val url = "https://66fd7640.ngrok.io/events/searchandroidvenues/"+date+"/"+ts+"/"
 
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -100,20 +97,14 @@ class EventSearchResultFragment : Fragment() {
         val bodystr =  response.body().string() // this can be consumed only once
         val dataarray = JSONArray(bodystr)
         for (i in 0 until dataarray.length()) {
-            val eventsModel = Event_Model()
+            val venueModel = Venue_Model()
             val dataobj = dataarray.getJSONObject(i)
-            eventsModel.seteventids(dataobj.getInt("id"))
-            eventsModel.setEventNames(dataobj.getString("eventname"))
-            eventsModel.setDescriptions(dataobj.getString("description"))
-            eventsModel.setDates(dataobj.getString("date"))
-            eventsModel.setTimeslots(dataobj.getString("timeslot"))
-            eventsModel.setCurrentUsers(dataobj.getString("currentusers"))
-            eventsModel.setMaxUsers(dataobj.getString("maxusers"))
-            eventsModel.setPrices(dataobj.getString("price"))
-            eventsModel.setVenueIDs(dataobj.getInt("venueid"))
-            eventModelArrayList?.add(eventsModel)
+            venueModel.setVenueids(dataobj.getInt("id"))
+            venueModel.setVenuenames(dataobj.getString("venuename"))
+
+            venueModelArrayList?.add(venueModel)
         }
 
-        return eventModelArrayList
+        return venueModelArrayList
     }
 }

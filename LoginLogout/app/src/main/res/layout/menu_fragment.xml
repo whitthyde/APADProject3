@@ -16,7 +16,14 @@
             android:orientation="vertical"
             android:padding="24dp"
             android:paddingTop="16dp">
-
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="132dp"
+                android:text="@string/MainMenu"
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
         <!-- Snippet from "Add buttons" section goes here. -->
         <RelativeLayout
@@ -42,8 +49,8 @@
         </RelativeLayout>
 
         <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <com.google.android.material.button.MaterialButton
                     android:id="@+id/allevents_button"
                     android:layout_width="wrap_content"
@@ -86,21 +93,21 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/timeslotsearch_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/timeslotsearch" />
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/timeslotsearch_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/timeslotsearch" />
         </RelativeLayout>
 
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/logout_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/logout_button" />
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/logout_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/logout_button" />
         </RelativeLayout>
 
     </LinearLayout>

@@ -58,13 +58,13 @@ class MenuFragment : Fragment() {
 
         view.venuesearch_button.setOnClickListener({
 
-            (activity as NavigationHost).navigateTo(LoginFragment(), false)
+            (activity as NavigationHost).navigateTo(VenueSearchFragment(), false)
 
         })
 
         view.timeslotsearch_button.setOnClickListener({
 
-            (activity as NavigationHost).navigateTo(LoginFragment(), false)
+            (activity as NavigationHost).navigateTo(TimeSearchFragment(), false)
 
         })
 

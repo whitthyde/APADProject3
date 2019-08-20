@@ -36,7 +36,7 @@
     <string name="hint_price">Price:</string>
     <string name="hint_venueid">Venue ID:</string>
 
-    <string name="JoinDirections">To join an event please fill out ONE of the following fields --- CHOOSE ONE.</string>
+    <string name="JoinDirections">To join an event please fill out at least one field.</string>
 
 
 

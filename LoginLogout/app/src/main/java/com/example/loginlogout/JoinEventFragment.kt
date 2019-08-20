@@ -32,7 +32,8 @@ class JoinEventFragment : Fragment() {
                 val gotresponse = JoinAttempt(event_id,event_name,user_email)   //time-consuming HTTP request
                 val jsonobj = JSONObject(gotresponse)
                 if(jsonobj.get("result") == eventnametext.text.toString()){(activity as NavigationHost).navigateTo(MenuFragment(), false)}
-                (activity as NavigationHost).navigateTo(EventFullFragment(), false)
+                if(jsonobj.get("result") == "false"){(activity as NavigationHost).navigateTo(EventFullFragment(), false)}
+
             }
 
 

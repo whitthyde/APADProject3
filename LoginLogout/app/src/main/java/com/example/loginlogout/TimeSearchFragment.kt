@@ -35,7 +35,7 @@ class TimeSearchFragment : Fragment() {
             Global.setVenueIdSearchTimes(timeslot)
             timeslot.ifEmpty { Global.setVenueIdSearchTimes("default")}
 
-            (activity as NavigationHost).navigateTo(VenueSearchResultFragment(), false)
+            (activity as NavigationHost).navigateTo(TimeSearchResultFragment(), false)
 
         })
 

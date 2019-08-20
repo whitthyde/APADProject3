@@ -89,7 +89,7 @@ class EventSearchResultFragment : Fragment() {
     private fun getEvents(en:String?,date:String?,ts:String?,vid:String?): ArrayList<Event_Model>? {
 
         val eventModelArrayList = ArrayList<Event_Model>()
-        val url = "https://66fd7640.ngrok.io/events/searchandroid/"+en+"/"+date+"/"+ts+"/"+vid+"/"
+        val url = "http://whydeyyanp2.appspot.com/events/searchandroid/"+en+"/"+date+"/"+ts+"/"+vid+"/"
 
         val client = OkHttpClient()
         val request = Request.Builder()

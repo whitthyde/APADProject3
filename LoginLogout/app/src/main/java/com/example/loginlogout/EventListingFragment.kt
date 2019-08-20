@@ -117,7 +117,7 @@ class EventListingFragment : Fragment() {
     private fun getEvents(): ArrayList<Event_Model>? {
 
         val eventModelArrayList = ArrayList<Event_Model>()
-        val url = "https://66fd7640.ngrok.io/events/"
+        val url = "http://whydeyyanp2.appspot.com/events/"
 
         val client = OkHttpClient()
         val request = Request.Builder()

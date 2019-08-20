@@ -45,7 +45,7 @@ class EventFullFragment : Fragment() {
 
 
     private fun LogoutAttempt(): String {
-        val url = "https://dea33744.ngrok.io/logout"
+        val url = "http://whydeyyanp2.appspot.com/logout"
         val client = OkHttpClient()
 
 /*        val json = """

@@ -100,7 +100,7 @@ class LoginFragment : Fragment() {
     //OKHTTP TRY
 
     private fun LoginAttempt(un: String, pw: String): String {
-        val url = "https://66fd7640.ngrok.io/login/auth/"+un+"/"+pw
+        val url = "http://whydeyyanp2.appspot.com/login/auth/"+un+"/"+pw
         val client = OkHttpClient()
 
 /*        val json = """

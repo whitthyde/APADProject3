@@ -52,7 +52,7 @@ class JoinEventFragment : Fragment() {
     }
 
     private fun JoinAttempt(id:String, en:String, email: String?): String {
-        val url = "https://214dd567.ngrok.io/events/joinandroid"
+        val url = "http://whydeyyanp2.appspot.com/events/joinandroid"
         val client = OkHttpClient()
 
         val json = """

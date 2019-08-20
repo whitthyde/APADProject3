@@ -19,23 +19,24 @@ import java.util.ArrayList
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
+import kotlinx.android.synthetic.main.time_listing_fragment.view.*
 import kotlinx.android.synthetic.main.venue_listing_fragment.view.*
 import kotlinx.android.synthetic.main.venue_listing_fragment.view.done_button
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 
-class VenueSearchResultFragment : Fragment() {
+class TimeSearchResultFragment : Fragment() {
     private val jsoncode = 1
 
-    private var venuelist: ListView? = null
-    private var venueArrayList: ArrayList<String>? = null
-    private var venuesModelArrayList: ArrayList<Venue_Model>? = null
-    private var VenueAdapter: VenueAdapter? = null
+    private var timelist: ListView? = null
+    private var timeArrayList: ArrayList<String>? = null
+    private var timesModelArrayList: ArrayList<Time_Model>? = null
+    private var TimeAdapter: TimeAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.venue_listing_fragment, container, false)
+        val view =  inflater.inflate(R.layout.time_listing_fragment, container, false)
 
         view.done_button.setOnClickListener({
 
@@ -44,29 +45,29 @@ class VenueSearchResultFragment : Fragment() {
 
         })
 
-        venuelist = view.venuelist
+        timelist = view.timelist
 //        userModelArrayList = getInfo(response)  // uncomment this and comment the next line if response is above
         //response = loadJSONFromAssets();
         doAsync {
             try {
 
-                var date = Global.getDateSearchVens()
-                var times = Global.getTimeslotSearchVens()
-                venuesModelArrayList = getVenues(date,times)
+                var date = Global.getDateSearchTimes()
+                var venueid = Global.getVenueIdSearchTimes()
+                timesModelArrayList = getTimes(date,venueid)
 
                 //resets variables after search plox
-                Global.setDateSearchVens("default")
-                Global.setTimeslotSearchVens("default")
+                Global.setDateSearchTimes("default")
+                Global.setVenueIdSearchTimes("default")
 
 
 
                 // Create a Custom Adapter that gives us a way to "view" each user in the ArrayList
-                VenueAdapter = VenueAdapter(view.context, venuesModelArrayList!!)
+                TimeAdapter = TimeAdapter(view.context, timesModelArrayList!!)
                 // set the custom adapter for the userlist viewing
                 val handler = Handler(Looper.getMainLooper());
                 handler.post({
                     try {
-                        venuelist!!.adapter = VenueAdapter
+                        timelist!!.adapter = TimeAdapter
                     } catch (e: Exception){
 
                     }
@@ -83,10 +84,10 @@ class VenueSearchResultFragment : Fragment() {
 
 
 
-    private fun getVenues(date:String?,ts:String?): ArrayList<Venue_Model>? {
+    private fun getTimes(date:String?,vi:String?): ArrayList<Time_Model>? {
 
-        val venueModelArrayList = ArrayList<Venue_Model>()
-        val url = "http://whydeyyanp2.appspot.com/events/searchandroidvenues/"+date+"/"+ts+"/"
+        val timeModelArrayList = ArrayList<Time_Model>()
+        val url = "http://whydeyyanp2.appspot.com/events/searchandroidtimes/"+date+"/"+vi+"/"
 
         val client = OkHttpClient()
         val request = Request.Builder()
@@ -97,14 +98,13 @@ class VenueSearchResultFragment : Fragment() {
         val bodystr =  response.body().string() // this can be consumed only once
         val dataarray = JSONArray(bodystr)
         for (i in 0 until dataarray.length()) {
-            val venueModel = Venue_Model()
+            val timeModel = Time_Model()
             val dataobj = dataarray.getJSONObject(i)
-            venueModel.setVenueids(dataobj.getInt("id"))
-            venueModel.setVenuenames(dataobj.getString("venuename"))
-
-            venueModelArrayList?.add(venueModel)
+            timeModel.setTimes(dataobj.getString("time"))
+            timeModel.setStatuses(dataobj.getString("status"))
+            timeModelArrayList?.add(timeModel)
         }
 
-        return venueModelArrayList
+        return timeModelArrayList
     }
 }

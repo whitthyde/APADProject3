@@ -78,7 +78,7 @@ class CreateEventFragment : Fragment() {
     //OKHTTP TRY
 
      fun CreateAttempt(en:String,hn:String,des: String,day:String, ts: String,cu: String,mu: String,pr: String,vi: String): String {
-        val url = "https://dea33744.ngrok.io/events/add"
+        val url = "http://whydeyyanp2.appspot.com/events/add"
         val client = OkHttpClient()
 
         val json = """
